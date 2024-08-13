@@ -1,6 +1,7 @@
+<body>
 <h2><strong>Books</strong></h2>
 
-<%= @books.each do |book| %>
+<% @books.each do |book| %>
 
 <p><strong>Title</strong></p>
 <span><%= book.title %></span>
@@ -8,4 +9,24 @@
 <p><strong>Body</strong></p>
 <span><%= book.body %></span>
 
+<%= link_to 'Delete', book_path(book.id), method: :delete, "date-confirm" => "Are you sure you want to delete this item?" %>
+
 <% end %>
+
+</body>
+
+<h2><strong>New Book</strong></h2>
+<%= form_with model: @book do |f| %>
+
+<p>Title</p>
+<%= f.text_field :title %>
+
+<p>Body</p>
+<%= f.text_area :body %>
+
+<span class="new-submit">
+<%= f.submit 'Create Book' %>
+</span>
+
+<% end %>
+

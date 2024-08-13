@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.submit{
+.new-submit{
   display: block;
 }
 
@@ -11,4 +11,16 @@
   line-height: 18px;
   color: #333;
   font-size: 13px;
+}
+
+.edit-heading{
+  line-height: 18px;
+}
+
+.edit-update-botton{
+  display: block;
+}
+
+index.html.erb body{
+  display: inline-block;
 }
