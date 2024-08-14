@@ -3,19 +3,39 @@
 
 <% @books.each do |book| %>
 
-<p><strong>Title</strong></p>
-<span><%= book.title %></span>
-
-<p><strong>Body</strong></p>
-<span><%= book.body %></span>
-
-<%= link_to 'Delete', book_path(book.id), method: :delete, "date-confirm" => "Are you sure you want to delete this item?" %>
+<table>
+  <thead>
+      <td>Title</td>
+      <td>Body</td>
+      <td colspan="3"></td>
+  </thead>
+ 
+  <tbody>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <td><%= link_to "Show", book_path(book.id) %></td>
+      <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+      <td><%= link_to 'Delete', book_path(book.id), method: :delete, "data-confirm" => "Are you sure you want to delete this item?" %></td>
+    </tr>
+  </tbody>
+</table>
 
 <% end %>
 
 </body>
 
 <h2><strong>New Book</strong></h2>
+
+<% if @book.errors.any? %>
+ <%= @book.errors.count %>error prohibited this book from being saved:
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+   <% end %>
+ </ul>
+<% end %>
+
 <%= form_with model: @book do |f| %>
 
 <p>Title</p>
@@ -29,4 +49,3 @@
 </span>
 
 <% end %>
-
